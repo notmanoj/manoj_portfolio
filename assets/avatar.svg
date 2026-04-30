@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#d9e6ff" />
+  <circle cx="300" cy="240" r="110" fill="#8aa7ff" />
+  <rect x="140" y="370" width="320" height="170" rx="85" fill="#8aa7ff" />
+  <text x="300" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#2b2b2b">avatar.svg</text>
+</svg>
