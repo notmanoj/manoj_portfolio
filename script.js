@@ -39,6 +39,25 @@ if (menuToggle && siteHeader && headerNav) {
   });
 }
 
+// ── Seamless video loop ──
+// The native `loop` attribute can cause a brief pause at the loop point,
+// especially on mobile with .mov files. We restart the video slightly
+// before it ends so the loop is imperceptible.
+const heroVideo = document.querySelector(".hero-avatar");
+if (heroVideo) {
+  heroVideo.addEventListener("timeupdate", () => {
+    if (heroVideo.duration && heroVideo.currentTime >= heroVideo.duration - 0.15) {
+      heroVideo.currentTime = 0;
+    }
+  });
+
+  // Ensure autoplay works on mobile after any user interaction
+  heroVideo.play().catch(() => {
+    document.addEventListener("touchstart", () => heroVideo.play(), { once: true });
+    document.addEventListener("click", () => heroVideo.play(), { once: true });
+  });
+}
+
 const projects = document.querySelectorAll(".project[data-bg]");
 const darkenHex = (hex, factor = 0.5) => {
   const normalized = hex.replace("#", "");
@@ -105,7 +124,6 @@ if (heroSection || projects.length) {
     if (activeSectionKey !== "hero") {
       activeSectionKey = "hero";
       setMenuFill("#FFFCF0");
-      triggerWave();
     }
   };
 

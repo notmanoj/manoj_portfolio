@@ -538,14 +538,21 @@ body {
     gap: 0;
     padding: 0;
     background: var(--menu-fill);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 220ms ease, padding 220ms ease;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0ms linear 200ms;
   }
 
   .site-header.menu-open .header-nav {
-    max-height: 320px;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
     padding: 8px 0 14px;
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0ms linear 0ms;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
   }
 
   .header-nav a {
