@@ -571,9 +571,20 @@ body {
   }
 
   .hero-bottom {
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 20px;
     align-items: flex-start;
+    width: 100%;
+  }
+
+  .hero-bottom-copy {
+    width: 100%;
+    flex: 1;
+  }
+
+  .hero-bottom-text {
+    width: 100%;
+    max-width: none;
   }
 
   .hero-text {
@@ -625,11 +636,29 @@ body {
     min-height: unset;
     padding-top: 120px;
     padding-bottom: 120px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  /* ── Mobile: project name font size 14px ── */
+  /* ── Mobile: project image full width, break out of section-inner padding ── */
+  .project img {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    max-height: none;
+    margin-left: -16px;
+    margin-right: -16px;
+    object-fit: cover;
+  }
+
+  /* ── Mobile: project meta keeps 16px padding ── */
+  .project-meta {
+    padding-left: 0;
+  }
+
+  /* ── Mobile: project name font size 16px ── */
   .project-meta a {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .draw-section {
