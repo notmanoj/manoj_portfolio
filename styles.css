@@ -532,7 +532,9 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 0;
     padding: 0;
     background: var(--menu-fill);
@@ -547,9 +549,10 @@ body {
   }
 
   .header-nav a {
-    width: calc(100% - 32px);
-    margin: 0 auto;
-    padding: 10px 0;
+    width: auto;
+    margin: 0;
+    padding: 10px 16px;
+    text-align: center;
   }
 
   .hero-inner {
@@ -575,16 +578,6 @@ body {
     gap: 20px;
     align-items: flex-start;
     width: 100%;
-  }
-
-  .hero-bottom-copy {
-    width: 100%;
-    flex: 1;
-  }
-
-  .hero-bottom-text {
-    width: 100%;
-    max-width: none;
   }
 
   .hero-text {
@@ -632,33 +625,44 @@ body {
     min-height: unset;
   }
 
+  /* Project inner keeps 16px side padding for meta text */
   .project-inner {
     min-height: unset;
     padding-top: 120px;
     padding-bottom: 120px;
-    padding-left: 0;
-    padding-right: 0;
   }
 
-  /* ── Mobile: project image full width, break out of section-inner padding ── */
+  /* ── Mobile: project image respects 16px padding on sides ── */
   .project img {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     max-height: none;
-    margin-left: -16px;
-    margin-right: -16px;
-    object-fit: cover;
-  }
-
-  /* ── Mobile: project meta keeps 16px padding ── */
-  .project-meta {
-    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0;
+    object-fit: contain;
   }
 
   /* ── Mobile: project name font size 16px ── */
   .project-meta a {
     font-size: 16px;
+  }
+
+  /* ── Mobile: coffee cup on right side of text ── */
+  .hero-coffee {
+    order: 2;
+    flex-shrink: 0;
+  }
+
+  .hero-bottom-copy {
+    order: 1;
+    width: 100%;
+    flex: 1;
+  }
+
+  .hero-bottom-text {
+    width: 100%;
+    max-width: none;
   }
 
   .draw-section {
