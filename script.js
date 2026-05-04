@@ -58,6 +58,23 @@ if (heroVideo) {
   });
 }
 
+// ── Scroll reveal ──
+const revealEls = document.querySelectorAll(".reveal");
+if (revealEls.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
+
 const projects = document.querySelectorAll(".project[data-bg]");
 const darkenHex = (hex, factor = 0.5) => {
   const normalized = hex.replace("#", "");

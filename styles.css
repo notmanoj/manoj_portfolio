@@ -64,7 +64,12 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 0;
+  padding: 18px 24px;
+}
+
+.section-inner.header-inner {
+  width: min(1296px, calc(100% - 48px));
+  max-width: 1296px;
 }
 
 .header-brand {
@@ -325,7 +330,16 @@ body {
 .project {
   min-height: 100svh;
   display: grid;
+  position: sticky;
+  top: 0;
+  /* Each card stacks above the previous */
+  border-radius: 0;
 }
+
+.project:nth-child(1) { z-index: 1; }
+.project:nth-child(2) { z-index: 2; }
+.project:nth-child(3) { z-index: 3; }
+.project:nth-child(4) { z-index: 4; }
 
 .project-inner {
   min-height: calc(100svh - 68px);
@@ -333,6 +347,11 @@ body {
   align-content: center;
   gap: 12px;
   padding: 108px 0 44px;
+}
+
+/* flip order: meta above image */
+.project-meta {
+  order: -1;
 }
 
 .project img {
@@ -346,8 +365,9 @@ body {
 }
 
 .project-meta {
-  margin-top: 28px;
-  padding-bottom: 14px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 0;
 }
 
 .project-meta a {
@@ -477,6 +497,106 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fade-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Entrance animations ── */
+.hero-avatar {
+  animation: fade-in 600ms ease both;
+  animation-delay: 100ms;
+}
+
+.first-line {
+  animation: fade-up-in 600ms ease both;
+  animation-delay: 180ms;
+}
+
+.body-text {
+  animation: fade-up-in 600ms ease both;
+  animation-delay: 280ms;
+}
+
+.hero-illustration {
+  animation: fade-in 800ms ease both;
+  animation-delay: 320ms;
+}
+
+.hero-bottom {
+  animation: fade-up-in 600ms ease both;
+  animation-delay: 400ms;
+}
+
+/* ── Scroll-reveal: elements start invisible, JS adds .visible ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Project image subtle hover ── */
+.project-inner a img {
+  display: block;
+  cursor: pointer;
+  transition: transform 400ms ease;
+}
+
+.project-inner a:has(img) {
+  display: block;
+}
+
+.project img {
+  transition: transform 400ms ease;
+}
+
+.project img:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Project meta link arrow nudge on hover ── */
+.project-meta a:hover::after {
+  transform: translateX(4px);
+}
+
+/* ── Nav link underline slide ── */
+.header-nav a {
+  position: relative;
+}
+
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.header-nav a:hover::after {
+  transform: scaleX(1);
 }
 
 @media (max-width: 1199px) {
@@ -630,6 +750,8 @@ body {
   /* ── Mobile: remove full-height project sections, use 120px padding instead ── */
   .project {
     min-height: unset;
+    position: sticky;
+    top: 0;
   }
 
   /* Project inner keeps 16px side padding for meta text */
