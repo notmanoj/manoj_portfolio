@@ -79,7 +79,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <FadeUp key={project.name} delay={index * 0.05}>
               <div>
-              <div className="relative w-full bg-[#E5E5E0] rounded-[4px] mb-3 overflow-hidden" style={{ height: "260px" }}>
+              <div className="relative w-full bg-[#E5E5E0] rounded-[4px] mb-3 overflow-hidden" style={{ aspectRatio: "16/9" }}>
                 {project.mainImage && (
                  <Image
   src={project.mainImage}
@@ -95,7 +95,8 @@ export default function Projects() {
                 {[0, 1].map((i) => (
                   <div
                     key={i}
-                    className="relative h-[141px] bg-[#E5E5E0] rounded-[4px] overflow-hidden"
+                    className="relative bg-[#E5E5E0] rounded-[4px] overflow-hidden"
+style={{ aspectRatio: "16/9" }}
                   >
                     {project.subImages?.[i] && (
                       <Image
