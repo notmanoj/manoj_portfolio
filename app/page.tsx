@@ -8,7 +8,7 @@ export default function Home() {
       {/* Top-left: mountain badge */}
       <div className="absolute top-25 left-30">
         <HoverBadge
-          src="/mountain.png"
+          src="/mountain.svg"
           alt="Mountain"
           caption="Originally from Nepal"
           width={166}
@@ -19,7 +19,7 @@ export default function Home() {
       {/* Bottom-right: UK flag badge */}
       <div className="absolute bottom-20 right-25">
         <HoverBadge
-          src="/uk-flag.png"
+          src="/uk-flag.svg"
           alt="UK Flag"
           caption="Currently living in the UK"
           width={78}
