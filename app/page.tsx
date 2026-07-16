@@ -72,14 +72,9 @@ export default function Home() {
           <a href="/about-me" className="btn-nav">
             about me
           </a>
-          <a
-            href="https://medium.com/@manojraihello"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-nav"
-          >
-            writing
-          </a>
+          <a href="/articles" className="btn-nav">
+  articles
+</a>
           <a
             href="https://www.linkedin.com/in/manojrai-ux/"
             target="_blank"
