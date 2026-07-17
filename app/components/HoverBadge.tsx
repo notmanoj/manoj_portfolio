@@ -32,14 +32,14 @@ export default function HoverBadge({
     )}
     {captionPosition === "right" && (
       <div className="flex items-center gap-3">
-        <span className="text-secondary text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <span className="text-secondary whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ fontSize: "12px" }}>
           {caption}
         </span>
       </div>
     )}
     {captionPosition === "left" && (
       <div className="flex items-center gap-3">
-        <span className="text-secondary text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <span className="text-secondary whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ fontSize: "12px" }}>
           {caption}
         </span>
       </div>

@@ -94,29 +94,10 @@ export default function AboutMe() {
             a constant desire to improve.
           </p>
           <p className="text-secondary leading-relaxed mb-4">
-            Let’s just say it’s been a wild ride full of late nights, coffee, and lots of creative breakthroughs (and a few breakdowns, but who’s counting?).
-
-I’m constantly pushing myself to grow and improve because I’m aiming for one thing: to be one of the best in the business.
-          </p>
+  Let&apos;s just say it&apos;s been a wild ride full of late nights, coffee, and lots of creative breakthroughs (and a few breakdowns, but who&apos;s counting?). I&apos;m constantly pushing myself to grow and improve because I&apos;m aiming for one thing: to be one of the best in the business.
+</p>
         </FadeUp>
-
-        {/* My Journey */}
-        <FadeUp className="mb-20">
-          <h2 className="section-heading mb-4">My Journey</h2>
-          <div className="flex flex-col gap-6">
-            {journey.map((item, i) => (
-              <FadeUp key={i} delay={i * 0.08}>
-                <h3 className="font-medium leading-relaxed text-black" style={{ fontSize: "16px" }}>
-                  {item.role}
-                </h3>
-                <p className="text-secondary text-sm mb-2">{item.time}</p>
-                <p className="text-secondary leading-relaxed" style={{ fontSize: "16px" }}>
-                  {item.description}
-                </p>
-              </FadeUp>
-            ))}
-          </div>
-        </FadeUp>
+       
 
         {/* Life Outside Figma */}
         <FadeUp>

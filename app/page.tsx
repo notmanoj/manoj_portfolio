@@ -13,6 +13,7 @@ export default function Home() {
           caption="Originally from Nepal"
           width={166}
           captionPosition="bottom"
+         
         />
       </div>
 
@@ -48,7 +49,7 @@ export default function Home() {
             <p
               style={{
   fontFamily: '"Instrument Serif", Georgia, serif',
-  fontStyle: "italic",
+  fontStyle: "normal",
   fontWeight: 400,
   fontSize: "18px",
   color: "#000000",
@@ -75,14 +76,6 @@ export default function Home() {
           <a href="/articles" className="btn-nav">
   articles
 </a>
-          <a
-            href="https://www.linkedin.com/in/manojrai-ux/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-nav"
-          >
-            linkedIn
-          </a>
           <a
             href="mailto:manojraihello@gmail.com"
             className="btn-nav"
