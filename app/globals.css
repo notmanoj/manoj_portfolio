@@ -2,18 +2,23 @@
 
 :root {
   --background: #FAFAFA;
-  --foreground: #000000;
+  --foreground: #535353;
   --secondary: #545454;
   --button-bg: #F7F0D8;
   --button-shadow: #D3CEB9;
 }
 
 body {
-  background: var(--background);
-  color: #545454;
+  background-color: #FAFAF8;
+  color: var(--foreground);
   font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
+  background-image:
+    linear-gradient(to right, #F1F1F1 1px, transparent 1px),
+    linear-gradient(to bottom, #F1F1F1 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
 }
 
 .page-title {

@@ -4,8 +4,7 @@ import FadeUp from "./components/FadeUp";
 
 export default function Home() {
   return (
-    <main className="relative flex-1 flex items-center justify-center py-16">
-      {/* Top-left: mountain badge */}
+<main className="relative flex-1 flex items-center justify-center py-16" style={{ paddingBottom: "120px" }}>      {/* Top-left: mountain badge */}
       <div className="absolute top-25 left-30">
         <HoverBadge
           src="/mountain.svg"
@@ -13,7 +12,6 @@ export default function Home() {
           caption="Originally from Nepal"
           width={166}
           captionPosition="bottom"
-         
         />
       </div>
 
@@ -30,60 +28,88 @@ export default function Home() {
 
       <Container>
         <FadeUp>
-        {/* Avatar + Name */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 rounded-xl flex-shrink-0 overflow-hidden">
+         <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-12 flex-shrink-0 overflow-hidden rounded-lg">
+              <img
+                src="/manoj.png"
+                alt="Manoj"
+                className="w-full h-full object-cover"
+              />
+            </div>
+                </div>
+        
+
+          {/* 
+              <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-12 flex-shrink-0 overflow-hidden">
             <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/manoj_gif.mp4" type="video/mp4" />
-              <source src="/manoj_gif.mov" type="video/quicktime" />
-            </video>
-          </div>
-          <div>
-            <img src="/manoj-logo.svg" alt="manoj" width={60} height={26} />
-            <p
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/manoj_gif.mp4" type="video/mp4" />
+                <source src="/manoj_gif.mov" type="video/quicktime" />
+              </video>
+            </div>
+          </div> */}
+
+          {/* Description */}
+          <p className="text-secondary leading-relaxed mb-6">
+            I’m Manoj, a designer who ships with effort, care and taste.
+          </p>
+          <p className="text-secondary leading-relaxed mb-6">
+            Product Designer (UK) with 4+ years of experience in websites, web
+            apps, mobile apps, and design systems.
+          </p>
+          <p className="text-secondary leading-relaxed mb-3">
+            You can find me on{" "}
+            <a
+              href="https://www.linkedin.com/in/manojrai-ux/"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-  fontFamily: '"Instrument Serif", Georgia, serif',
-  fontStyle: "normal",
-  fontWeight: 400,
-  fontSize: "18px",
-  color: "#000000",
-}}
+                textDecoration: "underline",
+                textDecorationColor: "#B2B2B2",
+              }}
             >
-              product designer
-            </p>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-secondary leading-relaxed mb-8">
-          Product Designer in the UK with 4+ years of experience designing user-centric digital products.
-        </p>
-
-        {/* Nav buttons */}
-        <nav className="flex flex-wrap gap-2">
-          <a href="/projects" className="btn-nav">
-            projects
-          </a>
-          <a href="/about-me" className="btn-nav">
-            about me
-          </a>
-          <a href="/articles" className="btn-nav">
-  articles
-</a>
-          <a
-            href="mailto:manojraihello@gmail.com"
-            className="btn-nav"
-            style={{ backgroundColor: "#FBE6A2" }}
-          >
-            mail
-          </a>
-        </nav>
+              LinkedIn
+            </a>
+            , explore my{" "}
+            <a
+              href="/projects"
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "#B2B2B2",
+              }}
+            >
+              projects
+            </a>
+            , or check out my latest UI/UX design work on{" "}
+            <a
+              href="https://dribbble.com/manoj_rai"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "#B2B2B2",
+              }}
+            >
+              Dribbble
+            </a>
+            . If you&apos;d like to say Hi!, feel free to{" "}
+            <a
+              href="mailto:manojraiux@gmail.com"
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "#B2B2B2",
+              }}
+            >
+              get in touch
+            </a>
+            .
+          </p>
         </FadeUp>
       </Container>
     </main>
