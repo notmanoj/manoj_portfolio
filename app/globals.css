@@ -100,3 +100,40 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+@keyframes linkReveal {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(q) translateZ(0);
+    letter-spacing: normal;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateZ(0);
+    letter-spacing: normal;
+  }
+}
+
+a {
+  display: inline-block;
+  animation: linkReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background: 
+    linear-gradient(#000000, #000000) no-repeat left bottom / 0% 1px,
+    linear-gradient(#B2B2B2, #B2B2B2) no-repeat left bottom / 100% 1px;
+  transition: background-size 0.3s ease, color 0.3s ease;
+  background-origin: padding-box;
+}
+
+a:hover {
+  color: #000000;
+  background: 
+    linear-gradient(#000000, #000000) no-repeat left bottom / 100% 1px,
+    linear-gradient(#B2B2B2, #B2B2B2) no-repeat left bottom / 100% 1px;
+}
