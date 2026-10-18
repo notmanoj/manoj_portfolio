@@ -1,13 +1,11 @@
 import Container from "./components/Container";
 import HoverBadge from "./components/HoverBadge";
 import FadeUp from "./components/FadeUp";
+import ScrambleLink from "./components/ScrambleLink";
 
 export default function Home() {
   return (
-    <main
-      className="relative flex-1 flex items-center justify-center py-16"
-      style={{ paddingBottom: "120px" }}
-    >
+    <main className="relative flex-1 flex items-center justify-center py-16" style={{ paddingBottom: "120px" }}>
       {/* Top-left: mountain badge */}
       <div className="absolute bottom-20 left-30">
         <HoverBadge
@@ -45,18 +43,39 @@ export default function Home() {
 
           {/* Description */}
           <p className="text-secondary leading-relaxed mb-6">
-            I&apos;m <a href="/about-me">Manoj</a>, a leader and Product Designer.
+            I&apos;m{" "}
+            <ScrambleLink href="/about-me">Manoj</ScrambleLink>
+            , a UI/UX designer turning ideas into thoughtful digital experiences.
           </p>
           <p className="text-secondary leading-relaxed mb-6">
-            Explore my <a href="/projects">selected work</a> , read my <a href="/articles">articles</a>, check out my designs on <a href="https://dribbble.com/manojrai" target="_blank" rel="noopener noreferrer">Dribbble</a>, or find me on{" "}
-            <a
-              href="https://www.linkedin.com/in/manojrai-ux/" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>.
+            Product Designer (UK) with 4+ years of experience in websites, web
+            apps, mobile apps, and design systems.
           </p>
-            <p>
-              Have something in mind? <a href="mailto:manojraiux@gmail.com">Let's connect</a> 
-            </p>
+          <p className="text-secondary leading-relaxed mb-3">
+            You can find me on{" "}
+            <ScrambleLink
+              href="https://www.linkedin.com/in/manojrai-ux/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </ScrambleLink>
+            , explore my{" "}
+            <ScrambleLink href="/projects">projects</ScrambleLink>
+            , or check out my latest UI/UX design work on{" "}
+            <ScrambleLink
+              href="https://dribbble.com/manoj_rai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Dribbble
+            </ScrambleLink>
+            . If you&apos;d like to say Hi!, feel free to{" "}
+            <ScrambleLink href="mailto:manojraiux@gmail.com">
+              get in touch
+            </ScrambleLink>
+            .
+          </p>
         </FadeUp>
       </Container>
     </main>
