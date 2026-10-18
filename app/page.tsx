@@ -4,7 +4,10 @@ import FadeUp from "./components/FadeUp";
 
 export default function Home() {
   return (
-    <main className="relative flex-1 flex items-center justify-center py-16" style={{ paddingBottom: "120px" }}>
+    <main
+      className="relative flex-1 flex items-center justify-center py-16"
+      style={{ paddingBottom: "120px" }}
+    >
       {/* Top-left: mountain badge */}
       <div className="absolute bottom-20 left-30">
         <HoverBadge
@@ -42,27 +45,18 @@ export default function Home() {
 
           {/* Description */}
           <p className="text-secondary leading-relaxed mb-6">
-            I&apos;m <a href="/about-me">Manoj</a>, a UI/UX designer turning ideas into thoughtful digital experiences.
+            I&apos;m <a href="/about-me">Manoj</a>, a leader and Product Designer.
           </p>
           <p className="text-secondary leading-relaxed mb-6">
-            Product Designer (UK) with 4+ years of experience in websites, web
-            apps, mobile apps, and design systems.
-          </p>
-          <p className="text-secondary leading-relaxed mb-3">
-            You can find me on{" "}
-            <a href="https://www.linkedin.com/in/manojrai-ux/" target="_blank" rel="noopener noreferrer">
+            Explore my <a href="/projects">selected work</a> , read my <a href="/articles">articles</a>, check out my designs on <a href="https://dribbble.com/manojrai" target="_blank" rel="noopener noreferrer">Dribbble</a>, or find me on{" "}
+            <a
+              href="https://www.linkedin.com/in/manojrai-ux/" target="_blank" rel="noopener noreferrer">
               LinkedIn
-            </a>
-            , explore my{" "}
-            <a href="/projects">projects</a>
-            , or check out my latest UI/UX design work on{" "}
-            <a href="https://dribbble.com/manoj_rai" target="_blank" rel="noopener noreferrer">
-              Dribbble
-            </a>
-            . If you&apos;d like to say Hi!, feel free to{" "}
-            <a href="mailto:manojraiux@gmail.com">get in touch</a>
-            .
+            </a>.
           </p>
+            <p>
+              Have something in mind? <a href="mailto:manojraiux@gmail.com">Let's connect</a> 
+            </p>
         </FadeUp>
       </Container>
     </main>

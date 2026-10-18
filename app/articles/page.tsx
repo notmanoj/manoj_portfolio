@@ -25,7 +25,7 @@ export default function Articles() {
         <div className="flex flex-col gap-6">
           {articles.map((article, i) => (
             <FadeUp key={article.slug} delay={i * 0.08}>
-              <Link href={`/articles/${article.slug}`}>
+              <Link href={`/articles/${article.slug}`} className="no-underline">
                 <div className="flex gap-4 items-start group cursor-pointer">
                   <div className="relative w-[120px] h-[80px] rounded-[8px] overflow-hidden flex-shrink-0 bg-[#E5E5E0]">
                     <Image
