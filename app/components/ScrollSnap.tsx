@@ -19,10 +19,13 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
       const el = wrapperRef.current;
       if (!el) return;
       const total = totalRef.current;
-      current.current = Math.max(0, Math.min(index, total - 1));
+      const next = Math.max(0, Math.min(index, total - 1));
+      if (next === current.current) return;
+      current.current = next;
       el.style.transform = `translateY(-${current.current * window.innerHeight}px)`;
       locked.current = true;
-      setTimeout(() => { locked.current = false; }, 700);
+      lastTime.current = Date.now();
+      setTimeout(() => { locked.current = false; }, 800);
     };
 
     useImperativeHandle(handle, () => ({ goTo }));
@@ -34,11 +37,8 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
 
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
-        const now = Date.now();
         if (locked.current) return;
         if (Math.abs(e.deltaY) < 30) return;
-        if (now - lastTime.current < 700) return;
-        lastTime.current = now;
         if (e.deltaY > 0) goTo(current.current + 1);
         else goTo(current.current - 1);
       };
@@ -51,29 +51,36 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
         else goTo(current.current - 1);
       };
 
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStartY.current = e.touches[0].clientY;
+      };
+
+      const handleTouchEnd = (e: TouchEvent) => {
+        if (locked.current) return;
+        const diff = touchStartY.current - e.changedTouches[0].clientY;
+        if (Math.abs(diff) < 50) return;
+        if (diff > 0) goTo(current.current + 1);
+        else goTo(current.current - 1);
+      };
+
       window.addEventListener("wheel", handleWheel, { passive: false });
       window.addEventListener("keydown", handleKey);
+      window.addEventListener("touchstart", handleTouchStart, { passive: true });
+      window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
       return () => {
         window.removeEventListener("wheel", handleWheel);
         window.removeEventListener("keydown", handleKey);
+        window.removeEventListener("touchstart", handleTouchStart);
+        window.removeEventListener("touchend", handleTouchEnd);
       };
     }, []);
 
     return (
       <div
-  ref={containerRef}
-  style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "scroll" }}
-  onTouchStart={(e) => {
-    touchStartY.current = e.touches[0].clientY;
-  }}
-  onTouchEnd={(e) => {
-    if (locked.current) return;
-    const diff = touchStartY.current - e.changedTouches[0].clientY;
-    if (Math.abs(diff) < 50) return;
-    if (diff > 0) goTo(current.current + 1);
-    else goTo(current.current - 1);
-  }}
->
+        ref={containerRef}
+        style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "scroll" }}
+      >
         <div
           ref={wrapperRef}
           style={{
