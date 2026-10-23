@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Container from "../components/Container";
 import BackButton from "../components/BackButton";
-import FadeUp from "../components/FadeUp";
+
 
 export default function AboutMe() {
   const journey = [
@@ -52,12 +52,12 @@ export default function AboutMe() {
     <main className="flex-1 py-10">
       <BackButton />
       <Container>
-        <FadeUp>
+       
           <h1 className="page-title mb-6">about me</h1>
-        </FadeUp>
+        
 
        {/* Cover image */}
-<FadeUp delay={0.1}>
+
   <div className="relative mb-12">
     <div className="relative w-full h-[180px] bg-[#E5E5E0] rounded-[16px] overflow-hidden">
       <Image src={coverImage} alt="Cover" fill className="object-cover" />
@@ -69,10 +69,10 @@ export default function AboutMe() {
       <Image src={profileImage} alt="Manoj Rai" fill className="object-cover" />
     </div>
   </div>
-</FadeUp>
+
 
         {/* Greeting */}
-        <FadeUp delay={0.15} className="mb-20">
+        
           <p className="text-secondary text-sm mb-2">
             Hello, नमस्ते  👋
           </p>
@@ -83,10 +83,10 @@ export default function AboutMe() {
             since 2025.
           </p>
           
-        </FadeUp>
+       
 
         {/* Self-taught section */}
-        <FadeUp className="mb-20">
+  
           
           <h2 className="section-heading mb-3">A Self-Taught Designer</h2>
           <p className="text-secondary leading-relaxed mb-4">
@@ -96,11 +96,11 @@ export default function AboutMe() {
           <p className="text-secondary leading-relaxed mb-4">
   Let&apos;s just say it&apos;s been a wild ride full of late nights, coffee, and lots of creative breakthroughs (and a few breakdowns, but who&apos;s counting?). I&apos;m constantly pushing myself to grow and improve because I&apos;m aiming for one thing: to be one of the best in the business.
 </p>
-        </FadeUp>
+        
        
 
         {/* Life Outside Figma */}
-        <FadeUp>
+      
           <h2 className="section-heading mb-3">Life Outside Figma</h2>
           <p className="text-secondary leading-relaxed mb-4">
             When I&apos;m away from the screen, you&apos;ll usually find me
@@ -114,7 +114,7 @@ export default function AboutMe() {
           {/* Books grid */}
           <div className="grid grid-cols-3 gap-9">
             {books.map((book, i) => (
-              <FadeUp key={i} delay={i * 0.07}>
+           
                 <div className="flex flex-col gap-2">
                   <div className="relative w-[118px] h-[180px] bg-[#E5E5E0] rounded-[4px] overflow-hidden shadow-[0_2px_2px_#D3CEB9]">
                     <Image
@@ -128,10 +128,10 @@ export default function AboutMe() {
                     {book.caption}
                   </p>
                 </div>
-              </FadeUp>
+              
             ))}
           </div>
-        </FadeUp>
+      
       </Container>
     </main>
   );

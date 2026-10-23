@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Container from "../../components/Container";
 import BackButton from "../../components/BackButton";
-import FadeUp from "../../components/FadeUp";
+import Nav from "../../components/Nav";
 import { notFound } from "next/navigation";
 
 type Section = {
@@ -38,8 +38,7 @@ const articles: Record<string, Article> = {
           "Don't add unnecessary things.",
           "Make your product different by solving the problem better.",
         ],
-        example:
-          "A calculator app should help people calculate quickly not include social media features.",
+        example: "A calculator app should help people calculate quickly not include social media features.",
       },
       {
         icon: "/articles/icons/agency.png",
@@ -52,7 +51,7 @@ const articles: Record<string, Article> = {
           "Always allow Undo or Back when possible.",
           "Help users recover from mistakes easily.",
         ],
-        example: "If someone deletes a photo, show an \"Undo\" option.",
+        example: 'If someone deletes a photo, show an "Undo" option.',
       },
       {
         icon: "/articles/icons/responsibility.png",
@@ -65,8 +64,7 @@ const articles: Record<string, Article> = {
           "Protect users' information.",
           "Be honest about how data is used.",
         ],
-        example:
-          "If your app asks for location, explain: \"We use your location to show nearby restaurants.\"",
+        example: 'If your app asks for location, explain: "We use your location to show nearby restaurants."',
       },
       {
         icon: "/articles/icons/familiarity.png",
@@ -78,8 +76,7 @@ const articles: Record<string, Article> = {
           "Keep buttons and navigation consistent.",
           "Give clear feedback after every action.",
         ],
-        example:
-          "Use a shopping cart icon for purchases because everyone recognizes it.",
+        example: "Use a shopping cart icon for purchases because everyone recognizes it.",
       },
       {
         icon: "/articles/icons/flexibility.png",
@@ -104,8 +101,7 @@ const articles: Record<string, Article> = {
           "Use short and clear text.",
           "Organize content so people know where to look.",
         ],
-        example:
-          "Instead of writing: \"Proceed to Authentication.\" Write: \"Sign In\".",
+        example: 'Instead of writing: "Proceed to Authentication." Write: "Sign In".',
       },
       {
         icon: "/articles/icons/craft.png",
@@ -132,8 +128,7 @@ const articles: Record<string, Article> = {
           "Don't let fun get in the way of usability.",
           "Great experiences come from many small details.",
         ],
-        example:
-          "A cheerful animation after completing a task makes users smile without slowing them down.",
+        example: "A cheerful animation after completing a task makes users smile without slowing them down.",
       },
     ],
   },
@@ -149,123 +144,60 @@ export default async function ArticlePage({
   if (!article) notFound();
 
   return (
-    <main className="flex-1 py-10">
-      <BackButton />
-      <Container>
-        {/* Cover */}
-        <FadeUp>
+    <>
+      <Nav />
+      <main style={{ paddingTop: "140px", paddingBottom: "40px", minHeight: "100vh" }}>
+        <BackButton />
+        <Container>
           <div className="relative w-full h-[220px] bg-[#E5E5E0] rounded-[16px] mb-6 overflow-hidden">
-            <Image
-              src={article.coverImage}
-              alt={article.title}
-              fill
-              className="object-cover"
-            />
+            <Image src={article.coverImage} alt={article.title} fill className="object-cover" />
           </div>
-        </FadeUp>
 
-        {/* Title + description */}
-        <FadeUp delay={0.1} className="mb-12">
-          <h1
-            style={{
-              fontFamily: '"Instrument Serif", Georgia, serif',
-              fontStyle: "normal",
-              fontWeight: 400,
-              fontSize: "24px",
-              lineHeight: 1.3,
-              marginBottom: "16px",
-              color: "#000000",
-            }}
-          >
-            {article.title}
-          </h1>
-          <p style={{ fontSize: "16px", color: "#545454", lineHeight: 1.4 }}>
-            {article.description}
-          </p>
-        </FadeUp>
+          <div style={{ marginBottom: "48px" }}>
+            <h1 style={{ fontFamily: '"Instrument Serif", Georgia, serif', fontWeight: 400, fontSize: "24px", lineHeight: 1.3, marginBottom: "16px", color: "#000000" }}>
+              {article.title}
+            </h1>
+            <p style={{ fontSize: "16px", color: "#545454", lineHeight: 1.4 }}>
+              {article.description}
+            </p>
+          </div>
 
-        {/* Sections */}
-        <div className="flex flex-col gap-16">
-          {article.sections.map((section, i) => (
-            <FadeUp key={i} delay={i * 0.05}>
-              {/* Icon */}
-              <div className="relative w-[64px] h-[64px] mb-3">
-                <Image
-                  src={section.icon}
-                  alt={section.title}
-                  fill
-                  className="object-contain"
-                />
+          <div style={{ display: "flex", flexDirection: "column", gap: "64px" }}>
+            {article.sections.map((section, i) => (
+              <div key={i}>
+                <div style={{ position: "relative", width: "64px", height: "64px", marginBottom: "12px" }}>
+                  <Image src={section.icon} alt={section.title} fill className="object-contain" />
+                </div>
+                <h2 style={{ fontFamily: '"Instrument Serif", Georgia, serif', fontWeight: 400, fontSize: "24px", lineHeight: 1.3, marginBottom: "8px", color: "#000000" }}>
+                  {section.title}
+                </h2>
+                <p style={{ fontSize: "16px", fontWeight: 500, color: "#000000", marginBottom: "16px" }}>
+                  {section.subtitle}
+                </p>
+                <p style={{ fontSize: "16px", fontWeight: 500, color: "#000000", marginBottom: "6px" }}>
+                  Remember:
+                </p>
+                <ul style={{ marginBottom: "16px", display: "flex", flexDirection: "column" }}>
+                  {section.remember.map((item, j) => (
+                    <li key={j} style={{ display: "flex", gap: "4px", fontSize: "16px", color: "#545454" }}>
+                      <span>–</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ fontSize: "16px", lineHeight: 1.4 }}>
+                  <span style={{ fontWeight: 500, color: "#000000" }}>Example: </span>
+                  <span style={{ color: "#545454" }}>{section.example}</span>
+                </p>
               </div>
-
-              {/* Section title */}
-              <h2
-                style={{
-                  fontFamily: '"Instrument Serif", Georgia, serif',
-                  fontStyle: "normal",
-                  fontWeight: 400,
-                  fontSize: "24px",
-                  lineHeight: 1.3,
-                  marginBottom: "8px",
-                  color: "#000000",
-                }}
-              >
-                {section.title}
-              </h2>
-
-              {/* Subtitle */}
-              <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  color: "#000000",
-                  marginBottom: "16px",
-                }}
-              >
-                {section.subtitle}
-              </p>
-
-              {/* Remember */}
-              <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  color: "#000000",
-                  marginBottom: "6px",
-                }}
-              >
-                Remember:
-              </p>
-              <ul className="flex flex-col gap-0" style={{ marginBottom: "16px" }}>
-                {section.remember.map((item, j) => (
-                  <li
-                    key={j}
-                    className="flex gap-1"
-                    style={{ fontSize: "16px", color: "#545454" }}
-                  >
-                    <span>–</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Example */}
-              <p style={{ fontSize: "16px", lineHeight: 1.4 }}>
-                <span style={{ fontWeight: 500, color: "#000000" }}>
-                  Example:{" "}
-                </span>
-                <span style={{ color: "#545454" }}>{section.example}</span>
-              </p>
-            </FadeUp>
-          ))}
-        </div>
-      </Container>
-    </main>
+            ))}
+          </div>
+        </Container>
+      </main>
+    </>
   );
 }
 
 export async function generateStaticParams() {
-  return [
-    { slug: "principles-of-great-design-apple" },
-  ];
+  return [{ slug: "principles-of-great-design-apple" }];
 }

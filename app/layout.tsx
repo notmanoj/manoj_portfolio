@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClickSound from "./components/ClickSound";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif, Delicious_Handrawn } from "next/font/google";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
@@ -16,11 +15,16 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+const deliciousHandrawn = Delicious_Handrawn({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-delicious",
+});
+
 export const metadata: Metadata = {
   title: "Manoj — Product Designer",
   description: "Portfolio of Manoj, a product designer based in UK.",
 };
-
 
 export default function RootLayout({
   children,
@@ -28,9 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#FAFAF8] text-black">
-        <ClickSound />
+    <html lang="en" className={`antialiased ${instrumentSans.variable} ${instrumentSerif.variable} ${deliciousHandrawn.variable}`}>
+      <body className="bg-[#FAFAF8] text-black">
         {children}
       </body>
     </html>

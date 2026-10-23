@@ -14,7 +14,7 @@ export default function FadeUp({
   className?: string;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div

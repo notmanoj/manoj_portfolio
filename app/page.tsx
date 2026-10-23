@@ -1,91 +1,54 @@
-import Container from "./components/Container";
-import HoverBadge from "./components/HoverBadge";
-import FadeUp from "./components/FadeUp";
-import ScrambleLink from "./components/ScrambleLink";
+"use client";
+import { useRef } from "react";
+import Nav from "./components/Nav";
+import ScrollSnap, { ScrollSnapHandle } from "./components/ScrollSnap";
+import StyledLink from "./components/StyledLink";
 
 export default function Home() {
+  const snapRef = useRef<ScrollSnapHandle>(null);
+
   return (
-    <main
-      className="relative flex-1 flex items-center justify-center py-16"
-      style={{ paddingBottom: "120px" }}
-    >
-      {/* Top-left: mountain badge */}
-      <div className="absolute bottom-20 left-30">
-        <HoverBadge
-          src="/mountain.svg"
-          alt="Mountain"
-          caption="Originally from Nepal"
-          width={166}
-          captionPosition="bottom"
-        />
-      </div>
-
-      {/* Bottom-right: UK flag badge */}
-      <div className="absolute bottom-20 right-25">
-        <HoverBadge
-          src="/uk-flag.svg"
-          alt="UK Flag"
-          caption="Currently living in the UK"
-          width={78}
-          captionPosition="bottom"
-        />
-      </div>
-
-      <Container>
-        <FadeUp>
-          {/* Avatar */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 flex-shrink-0 overflow-hidden rounded-lg">
-              <img
-                src="/manoj.png"
-                alt="Manoj"
-                className="w-full h-full object-cover"
-              />
+    <>
+      <Nav />
+      <ScrollSnap ref={snapRef}>
+        {/* Section 1 */}
+        <div style={{ height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+          <div className="flex flex-col items-center text-center">
+            <img src="/1.svg" alt="" className="mb-6" style={{ width: "146px", height: "146px" }} />
+            <p className="font-handwritten" style={{ fontSize: "2.5rem" }}>I&apos;m Manoj, a leader and a</p>
+            <div className="relative inline-block" style={{ padding: "10px 24px" }}>
+              <p className="font-handwritten" style={{ fontSize: "2.5rem" }}>Product Designer.</p>
+              <img src="/circle.svg" alt="" className="pointer-events-none" style={{ position: "absolute", top: "-16px", left: "0px", width: "calc(100% + 56px)", height: "calc(100% + 32px)" }} />
             </div>
           </div>
+          <button onClick={() => snapRef.current?.goTo(1)} className="hidden md:block" style={{ position: "absolute", bottom: "32px", right: "40px", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+            <img src="/arrow.svg" alt="scroll down" style={{ width: "57px", height: "91px" }} />
+          </button>
+        </div>
 
-          {/* Description */}
-          <p className="text-secondary leading-relaxed mb-6">
-            I&apos;m <ScrambleLink href="/about-me">Manoj</ScrambleLink>, a
-            leader and Product Designer.
-          </p>
-          <p className="text-secondary leading-relaxed mb-6">
-            I'm currently a Line Leader at Expac. Previously, I worked as a
-            Product Designer specializing in websites, web apps, mobile apps,
-            and design systems.
-          </p>
-          <p className="text-secondary leading-relaxed mb-6">
-            Explore my{" "}
-            <ScrambleLink href="/projects">selected works</ScrambleLink>, check
-            my latest design work on{" "}
-            <ScrambleLink
-              href="https://dribbble.com/manoj_rai"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Dribbble
-            </ScrambleLink>
-            , or read my <ScrambleLink href="/articles">articles</ScrambleLink>.
-          </p>
-          <p className="text-secondary leading-relaxed mb-6">
-            You can also connect with me on{" "}
-            <ScrambleLink
-              href="https://www.linkedin.com/in/manojrai-ux/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </ScrambleLink>
-          </p>
-          <p className="text-secondary leading-relaxed mb-6">
-            If you&apos;d like to say Hi! feel free to{" "}
-            <ScrambleLink href="mailto:manojraiux@gmail.com">
-              get in touch
-            </ScrambleLink>
-            .
-          </p>
-        </FadeUp>
-      </Container>
-    </main>
+        {/* Section 2 */}
+        <div style={{ height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="flex flex-col items-center text-center px-8 max-w-2xl">
+            <img src="/2.svg" alt="" className="mb-6" style={{ width: "146px", height: "146px" }} />
+            <p className="font-handwritten" style={{ fontSize: "2.5rem" }}>
+              Currently a Line Leader at Expac. Before that, I worked as a Product Designer from startups to big corporate teams.
+            </p>
+          </div>
+        </div>
+
+        {/* Section 3 */}
+        <div style={{ height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+          <div className="flex flex-col items-center text-center px-8 max-w-2xl">
+            <img src="/3.svg" alt="" className="mb-6" style={{ width: "146px", height: "146px" }} />
+            <p className="font-handwritten" style={{ fontSize: "2.5rem" }}>
+              Explore my <StyledLink href="/projects">selected work</StyledLink>, check my latest design work on <StyledLink href="https://dribbble.com/manoj_rai" target="_blank" rel="noopener noreferrer">dribbble</StyledLink> or read my <StyledLink href="/articles">articles</StyledLink>
+            </p>
+          </div>
+          <button onClick={() => snapRef.current?.goTo(0)} className="hidden md:block" style={{ position: "absolute", bottom: "32px", right: "40px", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+            <img src="/arrowup.svg" alt="scroll up" style={{ width: "57px", height: "91px" }} />
+          </button>
+        </div>
+      </ScrollSnap>
+    </>
   );
-}
+} 
