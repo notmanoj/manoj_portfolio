@@ -61,8 +61,8 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
 
     return (
       <>
-        {/* Desktop: fixed snap */}
-        <div className="hidden md:block" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
+        {/* Desktop only: fixed snap */}
+        <div className="hidden xl:block" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
           <div
             ref={wrapperRef}
             style={{
@@ -74,8 +74,8 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
           </div>
         </div>
 
-        {/* Mobile/tablet: normal scroll */}
-        <div className="block md:hidden">
+        {/* Mobile + tablet: normal scroll */}
+        <div className="block xl:hidden">
           {children}
         </div>
       </>
