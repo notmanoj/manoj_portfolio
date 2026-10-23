@@ -53,9 +53,7 @@ export default function Home() {
           <div className="flex flex-col items-center text-center px-8 max-w-2xl">
             <img src="/2.svg" alt="" className="mb-6" style={{ width: "146px", height: "146px" }} />
             <p className="font-handwritten" style={{ fontSize: "2.5rem" }}>
-              Currently a Line Leader at Expac.
-              <br />Before that, I worked as a Product Designer
-              <br />from startups to big corporate teams.
+              Currently a Line Leader at Expac. Before that, I worked as a Product Designer from startups to big corporate teams.
             </p>
           </div>
         </div>
