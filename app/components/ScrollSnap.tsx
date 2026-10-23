@@ -7,13 +7,10 @@ export interface ScrollSnapHandle {
 
 const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
   ({ children }, handle) => {
-    const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const current = useRef(0);
     const locked = useRef(false);
     const totalRef = useRef(0);
-    const lastTime = useRef(0);
-    const touchStartY = useRef(0);
 
     const goTo = (index: number) => {
       const el = wrapperRef.current;
@@ -24,7 +21,6 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
       current.current = next;
       el.style.transform = `translateY(-${current.current * window.innerHeight}px)`;
       locked.current = true;
-      lastTime.current = Date.now();
       setTimeout(() => { locked.current = false; }, 800);
     };
 
@@ -34,6 +30,9 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
       const el = wrapperRef.current;
       if (!el) return;
       totalRef.current = el.children.length;
+
+      const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!isDesktop) return;
 
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
@@ -51,46 +50,35 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, { children: React.ReactNode }>(
         else goTo(current.current - 1);
       };
 
-      const handleTouchStart = (e: TouchEvent) => {
-        touchStartY.current = e.touches[0].clientY;
-      };
-
-      const handleTouchEnd = (e: TouchEvent) => {
-        if (locked.current) return;
-        const diff = touchStartY.current - e.changedTouches[0].clientY;
-        if (Math.abs(diff) < 50) return;
-        if (diff > 0) goTo(current.current + 1);
-        else goTo(current.current - 1);
-      };
-
       window.addEventListener("wheel", handleWheel, { passive: false });
       window.addEventListener("keydown", handleKey);
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchend", handleTouchEnd, { passive: true });
 
       return () => {
         window.removeEventListener("wheel", handleWheel);
         window.removeEventListener("keydown", handleKey);
-        window.removeEventListener("touchstart", handleTouchStart);
-        window.removeEventListener("touchend", handleTouchEnd);
       };
     }, []);
 
     return (
-      <div
-        ref={containerRef}
-        style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "scroll" }}
-      >
-        <div
-          ref={wrapperRef}
-          style={{
-            transition: "transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)",
-            willChange: "transform",
-          }}
-        >
+      <>
+        {/* Desktop: fixed snap */}
+        <div className="hidden md:block" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, overflow: "hidden" }}>
+          <div
+            ref={wrapperRef}
+            style={{
+              transition: "transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)",
+              willChange: "transform",
+            }}
+          >
+            {children}
+          </div>
+        </div>
+
+        {/* Mobile/tablet: normal scroll */}
+        <div className="block md:hidden">
           {children}
         </div>
-      </div>
+      </>
     );
   }
 );
